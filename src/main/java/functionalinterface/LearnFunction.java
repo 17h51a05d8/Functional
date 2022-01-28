@@ -8,12 +8,13 @@ public class LearnFunction {
         Integer val = increment(0);
         System.out.println(val);
 
-        val = IncrementByOne.apply(val);
+        val = IncrementByOne.andThen(MultiplyByTwo).apply(val);
         System.out.println(val);
     }
 
     static int increment(Integer a){return ++a;}
 
     static Function<Integer, Integer> IncrementByOne = num -> ++num;
+    static Function<Integer, Integer> MultiplyByTwo = num -> 2*num;
 
 }
