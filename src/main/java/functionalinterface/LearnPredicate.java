@@ -1,5 +1,6 @@
 package functionalinterface;
 
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class LearnPredicate {
@@ -18,7 +19,13 @@ public class LearnPredicate {
         //Predicate Functional Interface
         System.out.println(isValidPhonePredicate.test(ph1));
         System.out.println(isValidPhonePredicate.test(ph2));
-        System.out.println(isValidPhonePredicate.test(ph3));
+        System.out.println(isValidPhonePredicate.test(ph3) + "\n");
+
+        //BiPredicate Functional Interface
+        String india = "India";
+        System.out.println(isValidPhoneAndCountry.test(india, ph1));
+        System.out.println(isValidPhoneAndCountry.test(india, ph2));
+        System.out.println(isValidPhoneAndCountry.test(india, ph3));
 
     }
 
@@ -26,7 +33,13 @@ public class LearnPredicate {
         return phoneNumber.length()==14 && phoneNumber.startsWith("+91-");
     }
 
-    static Predicate< String> isValidPhonePredicate =
+    static Predicate<String> isValidPhonePredicate =
             phoneNumber -> phoneNumber.length()==14 && phoneNumber.startsWith("+91-");
+
+    static BiPredicate <String, String> isValidPhoneAndCountry =
+            (country, phoneNumber) ->
+                "India".equalsIgnoreCase(country) &&
+                        phoneNumber.length() == 14 && phoneNumber.startsWith("+91-");
+
 
 }
