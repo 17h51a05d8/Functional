@@ -23,10 +23,10 @@ public class LearnPredicate {
     }
 
     static boolean isValidPhoneNumber(String phoneNumber){
-        return phoneNumber.length()==14 && phoneNumber.substring(0,4).equals("+91-");
+        return phoneNumber.length()==14 && phoneNumber.startsWith("+91-");
     }
 
     static Predicate< String> isValidPhonePredicate =
-            phoneNumber -> phoneNumber.length()==14 && phoneNumber.substring(0,4).equals("+91-");
+            phoneNumber -> phoneNumber.length()==14 && phoneNumber.startsWith("+91-");
 
 }
