@@ -3,10 +3,7 @@ package streams;
 import imperative.Person;
 
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
+import java.util.function.*;
 
 import static imperative.Gender.Female;
 import static imperative.Gender.Male;
@@ -27,7 +24,8 @@ public class LearnStream {
         Predicate<Person> femalePerson = p -> p.getGender().equals(Female);
         Predicate<Person> malePerson = p -> p.getGender().equals(Male);
         Function <Person,String> mappingFunction = Person::getName;
-        Consumer print = System.out::println;
+        Consumer <String> print = System.out::println;
+        IntConsumer intPrint = System.out::println;
         ToIntFunction<String> length = String::length;
 
         importantPeople.stream()
@@ -46,13 +44,12 @@ public class LearnStream {
         importantPeople.stream()
                 .filter(malePerson)
                 .map(mappingFunction)
-                .forEach(
-                        print);
+                .forEach(print);
 
         importantPeople.stream()
                 .map(mappingFunction)
                 .mapToInt(length)
-                .forEach(System.out::println);
+                .forEach(intPrint);
     }
 
 }
