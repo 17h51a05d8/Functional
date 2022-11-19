@@ -17,6 +17,7 @@ public class LearnConsumer {
     }
 
     static void greetCustomer(Customer customer){
+    	// Hellow world
         System.out.println("Hello" + customer.name +
                 ". Thanks for registering phone number "+ customer.phoneNumber);
     }
